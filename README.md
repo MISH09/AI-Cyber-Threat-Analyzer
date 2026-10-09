@@ -1,37 +1,21 @@
-# AI Cyber Threat Analyzer
+# AI Cyber Threat Advisor
 
-An AI-powered cybersecurity application that uses machine learning to classify network traffic, assess threat severity, and provide actionable mitigation recommendations.
+A machine learning-based cybersecurity application that classifies network traffic, assesses potential threats, assigns risk levels, and provides actionable mitigation recommendations.
 
 ## Overview
 
-Traditional Intrusion Detection Systems (IDS) focus primarily on identifying suspicious network activity. The AI Cyber Threat Analyzer aims to extend this process by combining attack classification with risk assessment and security advisories.
+Traditional intrusion detection systems can identify suspicious network activity, but interpreting the severity of an attack and deciding what to do next can require additional analysis.
 
-The application provides an interactive dashboard where users can select machine learning models, analyze predictions, review performance metrics, and understand recommended mitigation measures.
+The **AI Cyber Threat Advisor** aims to bridge this gap by combining machine learning-based attack classification with risk assessment and security recommendations in one application.
 
-## Features
+## Key Features
 
-- **Attack Classification:** Classifies network traffic into benign and malicious categories.
-- **Multiple ML Models:** Supports Random Forest, Decision Tree, XGBoost, and Isolation Forest.
-- **Risk Assessment:** Assigns a risk score to help prioritize potential threats.
-- **Threat Severity:** Categorizes detected threats according to the implemented risk assessment logic.
-- **Threat Advisory:** Provides recommendations for mitigating identified attack types.
-- **Interactive Dashboard:** Uses Streamlit to present predictions and analytical results.
-- **Model Evaluation:** Compares models using accuracy, precision, recall, and F1-score.
-- **Visual Analytics:** Includes confusion matrices, feature importance plots, and performance comparisons.
-
-## Attack Categories
-
-The project covers the following traffic categories:
-
-| Category | Description |
-|---|---|
-| BENIGN | Normal network traffic |
-| Bot | Traffic associated with bot activity |
-| Brute Force | Repeated attempts to guess credentials |
-| DDoS | Distributed Denial-of-Service |
-| DoS | Denial-of-Service |
-| PortScan | Network port scanning |
-| Web Attack | Malicious activity targeting web applications |
+- **Attack Classification:** Classifies network traffic into categories such as BENIGN, DoS, DDoS, PortScan, Bot, Brute Force, and Web Attack.
+- **Risk Assessment:** Calculates a risk score and assigns a severity level to detected activity.
+- **Threat Advisory:** Provides contextual information and recommended mitigation measures.
+- **Model Comparison:** Supports comparison of supervised machine learning models.
+- **Interactive Dashboard:** Presents detection results, model metrics, and visualizations.
+- **Anomaly Detection:** Includes an Isolation Forest model for exploring anomaly-based detection.
 
 ## Technology Stack
 
@@ -39,148 +23,111 @@ The project covers the following traffic categories:
 - **Machine Learning:** Scikit-learn, XGBoost
 - **Data Processing:** Pandas, NumPy
 - **Visualization:** Matplotlib
-- **Web Application:** Streamlit
-- **Model Persistence:** Pickle
+- **Interface:** Streamlit
 
 ## Machine Learning Models
 
-| Model | Purpose |
+The project explores the following models:
+
+| Model | Approach |
 |---|---|
-| Random Forest | Supervised traffic classification |
-| Decision Tree | Supervised traffic classification |
-| XGBoost | Gradient-boosted traffic classification |
-| Isolation Forest | Anomaly detection |
+| Random Forest | Supervised classification |
+| Decision Tree | Supervised classification |
+| XGBoost | Gradient-boosted classification |
+| Isolation Forest | Unsupervised anomaly detection |
 
-The supervised models predict predefined traffic categories. Isolation Forest is used to identify observations that differ from learned patterns.
+The supervised models predict attack categories, while Isolation Forest explores the detection of anomalous network activity.
 
-## Dataset
+## Dataset and Preprocessing
 
-The project uses network traffic data derived from the CICIDS2017 dataset.
+The project uses network traffic data derived from CICIDS2017 traffic captures and CSV datasets.
 
-The preprocessing pipeline includes:
+Preprocessing includes:
 
-1. Loading and combining selected CSV files.
-2. Handling missing and infinite values.
-3. Preparing numerical input features.
-4. Encoding attack labels.
-5. Splitting the data into training and testing sets.
-6. Training and evaluating machine learning models.
+- Combining the relevant traffic datasets
+- Handling missing and non-finite values
+- Preparing features for model training
+- Encoding attack labels
+- Splitting data into training and testing sets
 
-**Note:** The raw traffic CSV files are excluded from this repository because of their size. Obtain the dataset from its original source and place the files in the expected directory before running the preprocessing pipeline.
+The processed dataset and model artifacts are generated or stored locally as required by the implementation.
 
-Dataset source: [Canadian Institute for Cybersecurity — Intrusion Detection Evaluation Dataset (CICIDS2017)](https://www.unb.ca/cic/datasets/ids-2017.html)
+## Model Evaluation
 
-## Project Structure
+The supervised models achieved high accuracy in the current experimental evaluation. The project also evaluates precision, recall, and F1-score.
 
-```text
-AI-Cyber-Threat-Analyzer/
-├── advisor/
-│   ├── predict.py
-│   ├── recommendations.py
-│   └── risk_assessment.py
-├── evaluation/
-│   ├── graphs/
-│   ├── combined_result.py
-│   ├── plot_model_details.py
-│   └── plot_results.py
-├── models/
-│   ├── decision_tree.py
-│   ├── isolation_forest.py
-│   ├── random_forest.py
-│   └── xgboost_model.py
-├── preprocessing/
-│   ├── class_mapping.csv
-│   ├── clean_dataset.py
-│   ├── create_ml_dataset.py
-│   └── prepare_data.py
-├── results/
-├── saved_models/
-├── app.py
-├── main.py
-├── .gitignore
-└── README.md
-```
+Evaluation metrics should be interpreted alongside class-wise performance, confusion matrices, class imbalance, and checks for data leakage. Results on a random test split may not represent performance on unseen network environments.
 
-## Installation
+## How It Works
+
+1. Network traffic features are supplied to the application.
+2. The selected model predicts an attack category or identifies anomalous activity.
+3. The risk assessment component evaluates the detected activity.
+4. The advisor generates relevant mitigation recommendations.
+5. Results are displayed through the application interface.
+
+## Getting Started
 
 ### Prerequisites
 
-- Python 3.10 or a version compatible with the project dependencies
+- Python 3.10 or another Python version supported by the project's dependencies
 - pip
-- Git
 
-### 1. Clone the repository
+### Installation
+
+Clone the repository:
 
 ```bash
-git clone https://github.com/MISH09/AI-Cyber-Threat-Analyzer.git
-cd AI-Cyber-Threat-Analyzer
+git clone https://github.com/MISH09/REPOSITORY-NAME.git
+cd REPOSITORY-NAME
 ```
 
-### 2. Create a virtual environment
+Replace `REPOSITORY-NAME` with the actual GitHub repository name.
 
-On Windows PowerShell:
+Create and activate a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+On Windows:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+.venv\Scripts\Activate.ps1
 ```
 
-### 3. Install dependencies
-
-If `requirements.txt` is present:
+Install dependencies using the repository's dependency file:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Otherwise, install the dependencies used by the project, including Streamlit, Pandas, NumPy, Scikit-learn, Matplotlib, and XGBoost, with compatible versions.
+### Run the Application
 
-### 4. Run the application
+If the project uses Streamlit and the main entry point is `app.py`, run:
 
 ```bash
 streamlit run app.py
 ```
 
-Open the local URL displayed in the terminal.
+Follow the instructions in the repository if model files or datasets need to be downloaded or generated separately.
 
-**Note:** The application requires its trained model files and any other configured artifacts to be present. The raw datasets are not included in this repository.
+## Future Improvements
 
-## Evaluation
-
-The project evaluates classification models using:
-
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- Confusion matrices
-- Feature importance
-
-Performance metrics should be interpreted in the context of the dataset and evaluation methodology. High accuracy on a prepared dataset does not necessarily indicate equivalent performance on unseen or real-world network traffic.
-
-## Research Motivation
-
-The project explores how machine learning can support cybersecurity decision-making by combining network attack classification with risk-based prioritization and actionable recommendations.
-
-The broader research direction is to move beyond detection alone and help users interpret potential threats and determine appropriate mitigation actions.
-
-## Future Enhancements
-
-- Explainable AI for interpreting model predictions.
-- Evaluation on unseen network traffic.
-- Improved per-class performance analysis.
-- More robust risk scoring and validation.
-- Context-aware mitigation recommendations.
-- Real-time network traffic monitoring.
-- Integration with security monitoring tools.
-- Testing against previously unseen attack patterns.
+- Evaluate generalization on separate traffic captures and unseen network environments.
+- Investigate data leakage and class-wise performance.
+- Improve risk scoring through systematic validation.
+- Expand threat advisories with attack-specific mitigation guidance.
+- Add model explainability to help users understand predictions.
+- Explore integration with live or near-real-time traffic monitoring.
 
 ## Disclaimer
 
-This project is intended for educational, academic, and research purposes. Its predictions and risk scores should not be treated as definitive security assessments. Validate recommendations before applying them to production systems.
+This project is intended for educational and research purposes. Its predictions and mitigation recommendations should be validated before being used in production security environments.
 
 ## Author
 
 **Manasi Joshi**
 
-GitHub: [@MISH09](https://github.com/MISH09)
+GitHub: [MISH09](https://github.com/MISH09)
+
