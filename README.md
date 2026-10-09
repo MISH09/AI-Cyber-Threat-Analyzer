@@ -110,6 +110,20 @@ streamlit run app.py
 
 Follow the instructions in the repository if model files or datasets need to be downloaded or generated separately.
 
+## Experimental Results
+
+The following table summarizes the performance of the machine learning models evaluated in this project.
+
+| Model | Accuracy | Precision | Recall | F1-Score |
+|---|---:|---:|---:|---:|
+| XGBoost | 99.84% | 99.84% | 99.84% | 99.84% |
+| Random Forest | 99.82% | 99.82% | 99.82% | 99.82% |
+| Decision Tree | 99.77% | 99.77% | 99.77% | 99.77% |
+| Isolation Forest | 57.38% | 88.94% | 54.50% | 67.59% |
+
+**Note:** These results are from the current experimental evaluation. The supervised classification models and Isolation Forest use different detection approaches, so their metrics should be interpreted in the context of their respective evaluation methods. Performance should also be validated on independent data to assess generalization.
+
+
 ## Future Improvements
 
 - Evaluate generalization on separate traffic captures and unseen network environments.
