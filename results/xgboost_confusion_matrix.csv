@@ -1,0 +1,8 @@
+,BENIGN,Bot,Brute Force,DDoS,DoS,PortScan,Web Attack
+BENIGN,1993,5,1,0,0,0,0
+Bot,3,388,0,0,0,0,0
+Brute Force,0,0,2000,0,0,0,0
+DDoS,0,0,0,2000,0,0,0
+DoS,2,0,0,0,1998,0,0
+PortScan,1,0,0,0,1,1996,0
+Web Attack,3,0,0,0,0,1,432

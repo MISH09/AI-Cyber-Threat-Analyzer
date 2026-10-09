@@ -1,0 +1,19 @@
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.streamlit/secrets.toml
+.DS_Store
+
+# Large raw network traffic datasets
+MachineLearningCVE/*.csv
+
+# Generated datasets and train/test splits
+preprocessing/ml_dataset.csv
+preprocessing/clean_dataset.csv
+preprocessing/X_train.csv
+preprocessing/X_test.csv
+preprocessing/y_train.csv
+preprocessing/y_test.csv

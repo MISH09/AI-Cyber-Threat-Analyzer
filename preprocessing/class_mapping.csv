@@ -1,0 +1,8 @@
+Encoded,Attack_Type
+0,BENIGN
+1,Bot
+2,Brute Force
+3,DDoS
+4,DoS
+5,PortScan
+6,Web Attack
