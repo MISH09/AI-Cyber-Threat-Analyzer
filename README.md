@@ -78,11 +78,9 @@ Evaluation metrics should be interpreted alongside class-wise performance, confu
 Clone the repository:
 
 ```bash
-git clone https://github.com/MISH09/REPOSITORY-NAME.git
-cd REPOSITORY-NAME
+(https://github.com/MISH09/AI-Cyber-Threat-Analyzer)
+cd AI-Cyber-Threat-Analyzer
 ```
-
-Replace `REPOSITORY-NAME` with the actual GitHub repository name.
 
 Create and activate a virtual environment:
 
